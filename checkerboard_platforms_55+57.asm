@@ -116,7 +116,7 @@ CheckerboardPlatformGFX:
     STA $0305|!Base2,y
     STA $0309|!Base2,y
     STA $030D|!Base2,y
-    STA $0311|!Base2,y
+
     LDX $15E9|!Base2
     LDA !E4,x
     SEC : SBC $1A
@@ -127,17 +127,14 @@ CheckerboardPlatformGFX:
     STA $0308|!Base2,y              ; third tile 16 pixels to the right of the second
     CLC : ADC #$10
     STA $030C|!Base2,y              ; fourth tile 16 pixels to the right of the third
-    CLC : ADC #$10
-    STA $0310|!Base2,y              ; fifth tile 16 pixels to the right of the fourth
 
     LDA.b #!CheckerboardTile1
     STA $0302|!Base2,y              ; first tile
     LDA.b #!CheckerboardTile2
     STA $0306|!Base2,y              ; second,
     STA $030A|!Base2,y              ; third,
-    STA $030E|!Base2,y              ; and fourth tiles
     LDA.b #!CheckerboardTile3
-    STA $0312|!Base2,y              ; fifth tile
+    STA $030E|!Base2,y              ; and fourth tiles
 
     LDA $64
     ORA !15F6,x                     ; no hardcoded palette this time, and the two platforms use the same one
@@ -145,9 +142,8 @@ CheckerboardPlatformGFX:
     STA $0307|!Base2,y              ; second...
     STA $030B|!Base2,y              ; third...
     STA $030F|!Base2,y              ; fourth...
-    STA $0313|!Base2,y              ; and fifth tile
 
-    LDA #$04                        ; 5 tiles to draw
+    LDA #$03                        ; 4 tiles to draw
     LDY #$02                        ; all tiles are 16x16
     JSL $01B7B3|!BankB
     RTS
